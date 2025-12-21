@@ -1,0 +1,56 @@
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+AnyCPU/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# VS Code
+.vscode/
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+.nuget/
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Backup & temp files
+*.bak
+*.tmp
+*.temp
+*.old
+
+# Publish output
+publish/
+
+# Local databases
+*.db
+*.mdf
+*.ldf
+
+# App config secrets (if any)
+appsettings.json
+appsettings.Development.json
