@@ -138,6 +138,19 @@ This project is collaboration-ready and focuses on **clean business logic**, **C
 - Create payment for an order
 - Select payment method
 - Add tips
+## missing table 
+
+CREATE TABLE ProductInventory (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    MenuItemId INT NOT NULL,
+    Quantity INT NOT NULL DEFAULT 0,
+    ReorderLevel INT NOT NULL DEFAULT 0,
+    LastUpdated DATETIME2 NOT NULL DEFAULT GETDATE(),
+
+    CONSTRAINT FK_ProductInventory_MenuItems
+        FOREIGN KEY (MenuItemId) REFERENCES MenuItems(Id)
+);
+GO
 
 
 ## 🚀 How to Run the Project
