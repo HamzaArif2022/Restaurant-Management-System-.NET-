@@ -115,5 +115,90 @@ namespace RestaurantManagSyst.Service.Helpers
                 Image = dto.Image
             };
         }
+
+        // Employee Mapping
+        public static EmployeeDto ToDTO(this Employees entity)
+        {
+            if (entity == null) return null;
+
+            return new EmployeeDto
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Role = entity.Role,
+                Email = entity.Email,
+                Phone = entity.Phone,
+                HireDate = entity.HireDate,
+                Password = null // Never return password
+            };
+        }
+
+        public static Employees ToEntity(this EmployeeDto dto)
+        {
+            if (dto == null) return null;
+
+            return new Employees
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Role = dto.Role,
+                Email = dto.Email,
+                Phone = dto.Phone,
+                HireDate = dto.HireDate
+                // PasswordHash is handled separately in the service
+            };
+        }
+
+        // PaymentMethod Mapping
+        public static PaymentMethodDto ToDTO(this PaymentMethods entity)
+        {
+            if (entity == null) return null;
+
+            return new PaymentMethodDto
+            {
+                Id = entity.Id,
+                Label = entity.Label,
+                IsActive = entity.IsActive ?? true
+            };
+        }
+
+        public static PaymentMethods ToEntity(this PaymentMethodDto dto)
+        {
+            if (dto == null) return null;
+
+            return new PaymentMethods
+            {
+                Id = dto.Id,
+                Label = dto.Label,
+                IsActive = dto.IsActive
+            };
+        }
+
+        // Ingredient Mapping
+        public static IngredientDto ToDto(this Ingredients entity)
+        {
+            if (entity == null) return null;
+
+            return new IngredientDto
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Quantity = entity.Quantity,
+                Unit = entity.Unit
+            };
+        }
+
+        public static Ingredients ToEntity(this IngredientDto dto)
+        {
+            if (dto == null) return null;
+
+            return new Ingredients
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Quantity = dto.Quantity,
+                Unit = dto.Unit
+            };
+        }
     }
 }

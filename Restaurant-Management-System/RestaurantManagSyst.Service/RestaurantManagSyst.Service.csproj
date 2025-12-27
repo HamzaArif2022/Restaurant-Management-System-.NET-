@@ -53,16 +53,33 @@
   <ItemGroup>
     <Compile Include="DTOs\MenuItemDto.cs" />
     <Compile Include="DTOs\OrderDto.cs" />
+    <Compile Include="DTOs\OrderItemDto.cs" />
+    <Compile Include="DTOs\PaymentDto.cs" />
     <Compile Include="DTOs\ClientDto.cs" />
+    <Compile Include="DTOs\EmployeeDto.cs" />
+    <Compile Include="DTOs\PaymentMethodDto.cs" />
+    <Compile Include="DTOs\IngredientDto.cs" />
     <Compile Include="DTOs\UserDto.cs" />
     <Compile Include="Enums\ServiceResultCode.cs" />
     <Compile Include="Helpers\MappingHelper.cs" />
     <Compile Include="Helpers\ServiceResponse.cs" />
     <Compile Include="IServices\IAuthService.cs" />
     <Compile Include="IServices\IClientService.cs" />
+    <Compile Include="IServices\IEmployeeService.cs" />
+    <Compile Include="IServices\IPaymentMethodService.cs" />
+    <Compile Include="IServices\IMenuItemService.cs" />
+    <Compile Include="IServices\IIngredientService.cs" />
+    <Compile Include="IServices\IOrderService.cs" />
+    <Compile Include="IServices\IPaymentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\EmployeeService.cs" />
+    <Compile Include="Services\PaymentMethodService.cs" />
+    <Compile Include="Services\MenuItemService.cs" />
+    <Compile Include="Services\IngredientService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\PaymentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestaurantManagSyst.Data\RestaurantManagSyst.Data.csproj">

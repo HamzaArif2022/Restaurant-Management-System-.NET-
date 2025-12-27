@@ -37,6 +37,10 @@ namespace RestaurantManagSyst.Presentation
 
         private void ConfigurePermissions()
         {
+            // Temporarily show all buttons for testing
+            // Uncomment the code below to enforce role-based permissions
+            
+            /*
             if (CurrentUser.IsCashier())
             {
                 // Les caissiers n'ont pas accès à certaines fonctionnalités
@@ -44,6 +48,7 @@ namespace RestaurantManagSyst.Presentation
                 btnInventory.Visible = false;
                 btnPaymentMethods.Visible = false;
             }
+            */
         }
 
         private void OpenChildForm(Form childForm, string title)
