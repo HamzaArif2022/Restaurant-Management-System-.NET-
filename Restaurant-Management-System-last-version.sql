@@ -125,3 +125,23 @@ CREATE TABLE Users (
 );
 
 GO
+
+
+-- 1️⃣ Create OrderItems table (SQL Server)
+CREATE TABLE OrderItems (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    OrderId INT NOT NULL,
+    MenuItemId INT NOT NULL,
+    Quantity INT NOT NULL DEFAULT 1,
+    SpecialRequests NVARCHAR(MAX) NULL,
+    ItemStatus NVARCHAR(20) NOT NULL DEFAULT 'Waiting',
+
+    CONSTRAINT FK_OrderItems_Orders
+        FOREIGN KEY (OrderId) REFERENCES Orders(Id),
+
+    CONSTRAINT FK_OrderItems_MenuItems
+        FOREIGN KEY (MenuItemId) REFERENCES MenuItems(Id)
+);
+GO
+
+
