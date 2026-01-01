@@ -18,6 +18,8 @@ namespace RestaurantManagSyst.Data
         public MenuItems()
         {
             this.MenuItemIngredients = new HashSet<MenuItemIngredients>();
+            this.OrderItems = new HashSet<OrderItems>();
+            this.ProductInventory = new HashSet<ProductInventory>();
         }
     
         public int Id { get; set; }
@@ -32,5 +34,9 @@ namespace RestaurantManagSyst.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MenuItemIngredients> MenuItemIngredients { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderItems> OrderItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductInventory> ProductInventory { get; set; }
     }
 }

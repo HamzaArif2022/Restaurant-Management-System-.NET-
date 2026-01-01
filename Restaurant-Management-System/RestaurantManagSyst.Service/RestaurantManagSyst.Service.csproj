@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\MenuItemDto.cs" />
+    <Compile Include="DTOs\MenuItemIngredientDto.cs" />
     <Compile Include="DTOs\OrderDto.cs" />
     <Compile Include="DTOs\OrderItemDto.cs" />
     <Compile Include="DTOs\PaymentDto.cs" />
@@ -66,6 +67,8 @@
     <Compile Include="IServices\IAuthService.cs" />
     <Compile Include="IServices\IClientService.cs" />
     <Compile Include="IServices\IEmployeeService.cs" />
+    <Compile Include="IServices\IInventoryService.cs" />
+    <Compile Include="IServices\IMenuItemIngredientService.cs" />
     <Compile Include="IServices\IPaymentMethodService.cs" />
     <Compile Include="IServices\IMenuItemService.cs" />
     <Compile Include="IServices\IIngredientService.cs" />
@@ -75,6 +78,8 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\EmployeeService.cs" />
+    <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\MenuItemIngredientService.cs" />
     <Compile Include="Services\PaymentMethodService.cs" />
     <Compile Include="Services\MenuItemService.cs" />
     <Compile Include="Services\IngredientService.cs" />
@@ -93,6 +98,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Assets\Images\admin-logo.png" />
+    <Content Include="Assets\Images\cashier-logo.png" />
     <Content Include="Assets\Images\image1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

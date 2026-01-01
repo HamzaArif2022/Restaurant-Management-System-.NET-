@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="RestaurantManagementModel.Clients" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantManagementModel.Employees" Width="1.5" PointX="4.125" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantManagementModel.Ingredients" Width="1.5" PointX="11.875" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagementModel.Inventory" Width="1.5" PointX="9.125" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantManagementModel.MenuItemIngredients" Width="1.5" PointX="11" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantManagementModel.MenuItems" Width="1.5" PointX="8.5" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantManagementModel.Orders" Width="1.5" PointX="3.25" PointY="1.625" IsExpanded="true" />
@@ -20,6 +19,12 @@
         <AssociationConnector Association="RestaurantManagementModel.FK_MenuItemIngredients_Ingredients" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantManagementModel.FK_MenuItemIngredients_MenuItems" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantManagementModel.FK_Payments_Orders" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RestaurantManagementModel.IngredientInventory" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="RestaurantManagementModel.OrderItems" Width="1.5" PointX="14.125" PointY="3.875" />
+        <EntityTypeShape EntityType="RestaurantManagementModel.ProductInventory" Width="1.5" PointX="11.125" PointY="10.25" />
+        <AssociationConnector Association="RestaurantManagementModel.FK_OrderItems_MenuItems" />
+        <AssociationConnector Association="RestaurantManagementModel.FK_ProductInventory_MenuItems" />
+        <AssociationConnector Association="RestaurantManagementModel.FK_OrderItems_Orders" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

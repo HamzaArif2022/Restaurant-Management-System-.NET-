@@ -334,11 +334,32 @@ namespace RestaurantManagSyst.Presentation
                 if (order != null)
                 {
                     _selectedOrderId = order.Id;
+
+                    // Charger les paiements pour cette commande
                     LoadPaymentsForOrder(order.Id);
+
+                    // Afficher/Masquer le panel de paiement selon le statut
+                    if (order.Status == "Completed" || order.Status == "Cancelled")
+                    {
+                        pnlPayment.Visible = true;
+                    }
+                    else
+                    {
+                        pnlPayment.Visible = false;
+                    }
+
+                    // Mettre à jour le ComboBox de statut
+                    cmbStatus.SelectedItem = order.Status;
                 }
             }
+            else
+            {
+                // Aucune commande sélectionnée
+                _selectedOrderId = 0;
+                pnlPayment.Visible = false;
+                dgvPayments.DataSource = null;
+            }
         }
-
         private void LoadPaymentsForOrder(int orderId)
         {
             var response = _paymentService.GetPaymentsByOrderId(orderId);
@@ -477,6 +498,11 @@ namespace RestaurantManagSyst.Presentation
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadOrders();
+        }
+
+        private void dgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

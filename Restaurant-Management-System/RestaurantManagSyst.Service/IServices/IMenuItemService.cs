@@ -18,6 +18,8 @@ namespace RestaurantManagSyst.Service.IServices
         ServiceResponse SearchMenuItems(string searchTerm);
         ServiceResponse GetMenuItemsByCategory(string category);
         ServiceResponse ToggleAvailability(int id);
+
+
     }
 }
 

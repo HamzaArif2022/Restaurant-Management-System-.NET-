@@ -18,6 +18,7 @@ namespace RestaurantManagSyst.Data
         public Orders()
         {
             this.Payments = new HashSet<Payments>();
+            this.OrderItems = new HashSet<OrderItems>();
         }
     
         public int Id { get; set; }
@@ -33,5 +34,7 @@ namespace RestaurantManagSyst.Data
         public virtual Employees Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payments> Payments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderItems> OrderItems { get; set; }
     }
 }

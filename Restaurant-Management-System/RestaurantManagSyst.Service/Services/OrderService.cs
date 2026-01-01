@@ -7,12 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 
 namespace RestaurantManagSyst.Service.Services
 {
     public class OrderService : IOrderService
     {
+       
         public ServiceResponse GetAllOrders()
         {
             try
@@ -132,7 +134,7 @@ namespace RestaurantManagSyst.Service.Services
                         // Insert OrderItem using raw SQL since it's not in the EF model
                         string sql = @"INSERT INTO OrderItems (OrderId, MenuItemId, Quantity, SpecialRequests, ItemStatus) 
                                        VALUES (@p0, @p1, @p2, @p3, @p4)";
-                        
+
                         context.Database.ExecuteSqlCommand(sql,
                             orderId,
                             item.MenuItemId,
@@ -274,6 +276,7 @@ namespace RestaurantManagSyst.Service.Services
 
                     // Delete OrderItems first (using raw SQL since it's not in EF model)
                     context.Database.ExecuteSqlCommand("DELETE FROM OrderItems WHERE OrderId = @p0", order.Id);
+
 
                     context.Orders.Remove(order);
                     context.SaveChanges();

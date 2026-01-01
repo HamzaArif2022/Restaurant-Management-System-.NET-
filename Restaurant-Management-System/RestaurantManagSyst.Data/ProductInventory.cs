@@ -12,13 +12,14 @@ namespace RestaurantManagSyst.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Inventory
+    public partial class ProductInventory
     {
-        public int IngredientId { get; set; }
-        public string Name { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
-        public string Unit { get; set; }
-        public Nullable<decimal> ReorderLevel { get; set; }
-        public string SupplierInfo { get; set; }
+        public int Id { get; set; }
+        public int MenuItemId { get; set; }
+        public int Quantity { get; set; }
+        public int ReorderLevel { get; set; }
+        public System.DateTime LastUpdated { get; set; }
+    
+        public virtual MenuItems MenuItems { get; set; }
     }
 }

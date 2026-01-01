@@ -28,12 +28,14 @@ namespace RestaurantManagSyst.Data
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Ingredients> Ingredients { get; set; }
-        public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<MenuItemIngredients> MenuItemIngredients { get; set; }
         public virtual DbSet<MenuItems> MenuItems { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<PaymentMethods> PaymentMethods { get; set; }
         public virtual DbSet<Payments> Payments { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<IngredientInventory> IngredientInventory { get; set; }
+        public virtual DbSet<OrderItems> OrderItems { get; set; }
+        public virtual DbSet<ProductInventory> ProductInventory { get; set; }
     }
 }

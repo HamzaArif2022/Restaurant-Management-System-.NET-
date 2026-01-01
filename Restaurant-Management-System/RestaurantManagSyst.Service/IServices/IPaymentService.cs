@@ -6,6 +6,7 @@ namespace RestaurantManagSyst.Service.IServices
 {
     public interface IPaymentService
     {
+
         ServiceResponse GetAllPayments();
         ServiceResponse GetPaymentsByOrderId(int orderId);
         ServiceResponse AddPayment(PaymentDto paymentDto);

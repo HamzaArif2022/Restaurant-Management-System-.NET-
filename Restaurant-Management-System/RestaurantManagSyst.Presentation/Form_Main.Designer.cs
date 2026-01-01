@@ -132,7 +132,7 @@
             this.btnLogout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnLogout.Size = new System.Drawing.Size(250, 50);
             this.btnLogout.TabIndex = 8;
-            this.btnLogout.Text = "   Déconnexion";
+            this.btnLogout.Text = "🔒   Déconnexion";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = true;

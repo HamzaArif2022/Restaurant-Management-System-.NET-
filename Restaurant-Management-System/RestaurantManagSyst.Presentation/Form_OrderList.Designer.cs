@@ -50,7 +50,6 @@
             this.lblClient = new System.Windows.Forms.Label();
             this.lblCreateOrder = new System.Windows.Forms.Label();
             this.pnlOrdersList = new System.Windows.Forms.Panel();
-            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.pnlPayment = new System.Windows.Forms.Panel();
             this.dgvPayments = new System.Windows.Forms.DataGridView();
             this.btnAddPayment = new System.Windows.Forms.Button();
@@ -65,6 +64,7 @@
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblOrderManagement = new System.Windows.Forms.Label();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.Panel1.SuspendLayout();
@@ -77,10 +77,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.pnlOrderInfo.SuspendLayout();
             this.pnlOrdersList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.pnlPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).BeginInit();
             this.pnlOrderManagement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -88,15 +88,14 @@
             this.pnlTop.BackColor = System.Drawing.Color.White;
             this.pnlTop.Controls.Add(this.lblTotalOrders);
             this.pnlTop.Controls.Add(this.btnRefresh);
-            this.pnlTop.Controls.Add(this.btnDeleteOrder);
-            this.pnlTop.Controls.Add(this.btnUpdateStatus);
             this.pnlTop.Controls.Add(this.txtSearch);
             this.pnlTop.Controls.Add(this.lblSearch);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Padding = new System.Windows.Forms.Padding(20, 20, 20, 10);
-            this.pnlTop.Size = new System.Drawing.Size(1400, 80);
+            this.pnlTop.Padding = new System.Windows.Forms.Padding(27, 25, 27, 12);
+            this.pnlTop.Size = new System.Drawing.Size(1867, 98);
             this.pnlTop.TabIndex = 0;
             // 
             // lblTotalOrders
@@ -104,9 +103,10 @@
             this.lblTotalOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalOrders.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTotalOrders.ForeColor = System.Drawing.Color.Gray;
-            this.lblTotalOrders.Location = new System.Drawing.Point(1000, 45);
+            this.lblTotalOrders.Location = new System.Drawing.Point(1291, 70);
+            this.lblTotalOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalOrders.Name = "lblTotalOrders";
-            this.lblTotalOrders.Size = new System.Drawing.Size(380, 23);
+            this.lblTotalOrders.Size = new System.Drawing.Size(507, 28);
             this.lblTotalOrders.TabIndex = 4;
             this.lblTotalOrders.Text = "Total: 0 commande(s)";
             this.lblTotalOrders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -120,9 +120,10 @@
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(1100, 20);
+            this.btnRefresh.Location = new System.Drawing.Point(938, 47);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(50, 35);
+            this.btnRefresh.Size = new System.Drawing.Size(129, 38);
             this.btnRefresh.TabIndex = 5;
             this.btnRefresh.Text = "🔄";
             this.btnRefresh.UseVisualStyleBackColor = false;
@@ -137,9 +138,10 @@
             this.btnDeleteOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteOrder.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDeleteOrder.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteOrder.Location = new System.Drawing.Point(1200, 20);
+            this.btnDeleteOrder.Location = new System.Drawing.Point(438, 51);
+            this.btnDeleteOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDeleteOrder.Name = "btnDeleteOrder";
-            this.btnDeleteOrder.Size = new System.Drawing.Size(90, 35);
+            this.btnDeleteOrder.Size = new System.Drawing.Size(120, 43);
             this.btnDeleteOrder.TabIndex = 3;
             this.btnDeleteOrder.Text = "🗑️ Supprimer";
             this.btnDeleteOrder.UseVisualStyleBackColor = false;
@@ -154,9 +156,10 @@
             this.btnUpdateStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnUpdateStatus.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateStatus.Location = new System.Drawing.Point(1300, 20);
+            this.btnUpdateStatus.Location = new System.Drawing.Point(305, 52);
+            this.btnUpdateStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdateStatus.Name = "btnUpdateStatus";
-            this.btnUpdateStatus.Size = new System.Drawing.Size(80, 35);
+            this.btnUpdateStatus.Size = new System.Drawing.Size(107, 43);
             this.btnUpdateStatus.TabIndex = 2;
             this.btnUpdateStatus.Text = "📝 Statut";
             this.btnUpdateStatus.UseVisualStyleBackColor = false;
@@ -165,9 +168,10 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSearch.Location = new System.Drawing.Point(23, 43);
+            this.txtSearch.Location = new System.Drawing.Point(31, 53);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(400, 27);
+            this.txtSearch.Size = new System.Drawing.Size(532, 32);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -176,16 +180,18 @@
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblSearch.Location = new System.Drawing.Point(20, 20);
+            this.lblSearch.Location = new System.Drawing.Point(27, 25);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(200, 19);
+            this.lblSearch.Size = new System.Drawing.Size(221, 23);
             this.lblSearch.TabIndex = 0;
             this.lblSearch.Text = "🔍 Rechercher commandes";
             // 
             // pnlMain
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 80);
+            this.pnlMain.Location = new System.Drawing.Point(0, 98);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlMain.Name = "pnlMain";
             // 
             // pnlMain.Panel1
@@ -197,8 +203,9 @@
             // 
             this.pnlMain.Panel2.Controls.Add(this.pnlOrdersList);
             this.pnlMain.Panel2MinSize = 600;
-            this.pnlMain.Size = new System.Drawing.Size(1400, 670);
-            this.pnlMain.SplitterDistance = 700;
+            this.pnlMain.Size = new System.Drawing.Size(1867, 825);
+            this.pnlMain.SplitterDistance = 933;
+            this.pnlMain.SplitterWidth = 5;
             this.pnlMain.TabIndex = 1;
             // 
             // pnlOrderCreation
@@ -209,9 +216,10 @@
             this.pnlOrderCreation.Controls.Add(this.pnlOrderInfo);
             this.pnlOrderCreation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlOrderCreation.Location = new System.Drawing.Point(0, 0);
+            this.pnlOrderCreation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlOrderCreation.Name = "pnlOrderCreation";
-            this.pnlOrderCreation.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlOrderCreation.Size = new System.Drawing.Size(700, 670);
+            this.pnlOrderCreation.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
+            this.pnlOrderCreation.Size = new System.Drawing.Size(933, 825);
             this.pnlOrderCreation.TabIndex = 0;
             // 
             // pnlOrderItems
@@ -223,10 +231,11 @@
             this.pnlOrderItems.Controls.Add(this.dgvOrderItems);
             this.pnlOrderItems.Controls.Add(this.lblOrderItems);
             this.pnlOrderItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlOrderItems.Location = new System.Drawing.Point(20, 300);
+            this.pnlOrderItems.Location = new System.Drawing.Point(27, 370);
+            this.pnlOrderItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlOrderItems.Name = "pnlOrderItems";
-            this.pnlOrderItems.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlOrderItems.Size = new System.Drawing.Size(660, 350);
+            this.pnlOrderItems.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.pnlOrderItems.Size = new System.Drawing.Size(879, 430);
             this.pnlOrderItems.TabIndex = 2;
             // 
             // lblTotalAmount
@@ -234,9 +243,10 @@
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTotalAmount.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.lblTotalAmount.Location = new System.Drawing.Point(15, 280);
+            this.lblTotalAmount.Location = new System.Drawing.Point(20, 344);
+            this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(300, 30);
+            this.lblTotalAmount.Size = new System.Drawing.Size(400, 37);
             this.lblTotalAmount.TabIndex = 4;
             this.lblTotalAmount.Text = "Total: 0,00 €";
             // 
@@ -249,9 +259,10 @@
             this.btnClearOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearOrder.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnClearOrder.ForeColor = System.Drawing.Color.White;
-            this.btnClearOrder.Location = new System.Drawing.Point(450, 280);
+            this.btnClearOrder.Location = new System.Drawing.Point(599, 344);
+            this.btnClearOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClearOrder.Name = "btnClearOrder";
-            this.btnClearOrder.Size = new System.Drawing.Size(90, 40);
+            this.btnClearOrder.Size = new System.Drawing.Size(120, 49);
             this.btnClearOrder.TabIndex = 3;
             this.btnClearOrder.Text = "Effacer";
             this.btnClearOrder.UseVisualStyleBackColor = false;
@@ -266,9 +277,10 @@
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.White;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(550, 280);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(732, 344);
+            this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(95, 40);
+            this.btnPlaceOrder.Size = new System.Drawing.Size(127, 49);
             this.btnPlaceOrder.TabIndex = 2;
             this.btnPlaceOrder.Text = "✅ Passer";
             this.btnPlaceOrder.UseVisualStyleBackColor = false;
@@ -276,15 +288,17 @@
             // 
             // dgvOrderItems
             // 
-            this.dgvOrderItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvOrderItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOrderItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrderItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOrderItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderItems.Location = new System.Drawing.Point(15, 40);
+            this.dgvOrderItems.Location = new System.Drawing.Point(20, 49);
+            this.dgvOrderItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvOrderItems.Name = "dgvOrderItems";
-            this.dgvOrderItems.Size = new System.Drawing.Size(630, 230);
+            this.dgvOrderItems.RowHeadersWidth = 51;
+            this.dgvOrderItems.Size = new System.Drawing.Size(839, 282);
             this.dgvOrderItems.TabIndex = 1;
             this.dgvOrderItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderItems_CellClick);
             // 
@@ -293,9 +307,10 @@
             this.lblOrderItems.AutoSize = true;
             this.lblOrderItems.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblOrderItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.lblOrderItems.Location = new System.Drawing.Point(15, 15);
+            this.lblOrderItems.Location = new System.Drawing.Point(20, 18);
+            this.lblOrderItems.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrderItems.Name = "lblOrderItems";
-            this.lblOrderItems.Size = new System.Drawing.Size(120, 21);
+            this.lblOrderItems.Size = new System.Drawing.Size(160, 28);
             this.lblOrderItems.TabIndex = 0;
             this.lblOrderItems.Text = "Articles ajoutés";
             // 
@@ -309,10 +324,11 @@
             this.pnlAddItem.Controls.Add(this.cmbMenuItem);
             this.pnlAddItem.Controls.Add(this.lblMenuItem);
             this.pnlAddItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlAddItem.Location = new System.Drawing.Point(20, 200);
+            this.pnlAddItem.Location = new System.Drawing.Point(27, 247);
+            this.pnlAddItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlAddItem.Name = "pnlAddItem";
-            this.pnlAddItem.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlAddItem.Size = new System.Drawing.Size(660, 100);
+            this.pnlAddItem.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.pnlAddItem.Size = new System.Drawing.Size(879, 123);
             this.pnlAddItem.TabIndex = 1;
             // 
             // lblItemPrice
@@ -320,9 +336,10 @@
             this.lblItemPrice.AutoSize = true;
             this.lblItemPrice.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblItemPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.lblItemPrice.Location = new System.Drawing.Point(300, 50);
+            this.lblItemPrice.Location = new System.Drawing.Point(400, 62);
+            this.lblItemPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemPrice.Name = "lblItemPrice";
-            this.lblItemPrice.Size = new System.Drawing.Size(50, 19);
+            this.lblItemPrice.Size = new System.Drawing.Size(58, 23);
             this.lblItemPrice.TabIndex = 5;
             this.lblItemPrice.Text = "Prix: -";
             // 
@@ -335,9 +352,10 @@
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnAddItem.ForeColor = System.Drawing.Color.White;
-            this.btnAddItem.Location = new System.Drawing.Point(550, 45);
+            this.btnAddItem.Location = new System.Drawing.Point(732, 55);
+            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(95, 35);
+            this.btnAddItem.Size = new System.Drawing.Size(127, 43);
             this.btnAddItem.TabIndex = 4;
             this.btnAddItem.Text = "➕ Ajouter";
             this.btnAddItem.UseVisualStyleBackColor = false;
@@ -346,14 +364,15 @@
             // nudQuantity
             // 
             this.nudQuantity.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.nudQuantity.Location = new System.Drawing.Point(200, 48);
+            this.nudQuantity.Location = new System.Drawing.Point(267, 59);
+            this.nudQuantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nudQuantity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudQuantity.Name = "nudQuantity";
-            this.nudQuantity.Size = new System.Drawing.Size(80, 27);
+            this.nudQuantity.Size = new System.Drawing.Size(107, 32);
             this.nudQuantity.TabIndex = 3;
             this.nudQuantity.Value = new decimal(new int[] {
             1,
@@ -366,9 +385,10 @@
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblQuantity.Location = new System.Drawing.Point(200, 25);
+            this.lblQuantity.Location = new System.Drawing.Point(267, 31);
+            this.lblQuantity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(65, 19);
+            this.lblQuantity.Size = new System.Drawing.Size(77, 23);
             this.lblQuantity.TabIndex = 2;
             this.lblQuantity.Text = "Quantité";
             // 
@@ -377,9 +397,10 @@
             this.cmbMenuItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cmbMenuItem.FormattingEnabled = true;
-            this.cmbMenuItem.Location = new System.Drawing.Point(15, 48);
+            this.cmbMenuItem.Location = new System.Drawing.Point(20, 59);
+            this.cmbMenuItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbMenuItem.Name = "cmbMenuItem";
-            this.cmbMenuItem.Size = new System.Drawing.Size(170, 28);
+            this.cmbMenuItem.Size = new System.Drawing.Size(225, 33);
             this.cmbMenuItem.TabIndex = 1;
             this.cmbMenuItem.SelectedIndexChanged += new System.EventHandler(this.cmbMenuItem_SelectedIndexChanged);
             // 
@@ -388,9 +409,10 @@
             this.lblMenuItem.AutoSize = true;
             this.lblMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblMenuItem.Location = new System.Drawing.Point(15, 25);
+            this.lblMenuItem.Location = new System.Drawing.Point(20, 31);
+            this.lblMenuItem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMenuItem.Name = "lblMenuItem";
-            this.lblMenuItem.Size = new System.Drawing.Size(50, 19);
+            this.lblMenuItem.Size = new System.Drawing.Size(58, 23);
             this.lblMenuItem.TabIndex = 0;
             this.lblMenuItem.Text = "Article";
             // 
@@ -407,19 +429,21 @@
             this.pnlOrderInfo.Controls.Add(this.lblClient);
             this.pnlOrderInfo.Controls.Add(this.lblCreateOrder);
             this.pnlOrderInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlOrderInfo.Location = new System.Drawing.Point(20, 20);
+            this.pnlOrderInfo.Location = new System.Drawing.Point(27, 25);
+            this.pnlOrderInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlOrderInfo.Name = "pnlOrderInfo";
-            this.pnlOrderInfo.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlOrderInfo.Size = new System.Drawing.Size(660, 180);
+            this.pnlOrderInfo.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.pnlOrderInfo.Size = new System.Drawing.Size(879, 222);
             this.pnlOrderInfo.TabIndex = 0;
             // 
             // txtNotes
             // 
             this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNotes.Location = new System.Drawing.Point(400, 50);
+            this.txtNotes.Location = new System.Drawing.Point(533, 62);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(245, 120);
+            this.txtNotes.Size = new System.Drawing.Size(325, 147);
             this.txtNotes.TabIndex = 8;
             // 
             // lblNotes
@@ -427,18 +451,20 @@
             this.lblNotes.AutoSize = true;
             this.lblNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblNotes.Location = new System.Drawing.Point(400, 25);
+            this.lblNotes.Location = new System.Drawing.Point(533, 31);
+            this.lblNotes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(50, 19);
+            this.lblNotes.Size = new System.Drawing.Size(55, 23);
             this.lblNotes.TabIndex = 7;
             this.lblNotes.Text = "Notes";
             // 
             // txtTableNumber
             // 
             this.txtTableNumber.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTableNumber.Location = new System.Drawing.Point(200, 120);
+            this.txtTableNumber.Location = new System.Drawing.Point(267, 148);
+            this.txtTableNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTableNumber.Name = "txtTableNumber";
-            this.txtTableNumber.Size = new System.Drawing.Size(180, 27);
+            this.txtTableNumber.Size = new System.Drawing.Size(239, 32);
             this.txtTableNumber.TabIndex = 6;
             // 
             // lblTableNumber
@@ -446,9 +472,10 @@
             this.lblTableNumber.AutoSize = true;
             this.lblTableNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTableNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTableNumber.Location = new System.Drawing.Point(200, 95);
+            this.lblTableNumber.Location = new System.Drawing.Point(267, 117);
+            this.lblTableNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTableNumber.Name = "lblTableNumber";
-            this.lblTableNumber.Size = new System.Drawing.Size(95, 19);
+            this.lblTableNumber.Size = new System.Drawing.Size(116, 23);
             this.lblTableNumber.TabIndex = 5;
             this.lblTableNumber.Text = "Numéro table";
             // 
@@ -457,9 +484,10 @@
             this.cmbEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployee.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cmbEmployee.FormattingEnabled = true;
-            this.cmbEmployee.Location = new System.Drawing.Point(15, 120);
+            this.cmbEmployee.Location = new System.Drawing.Point(20, 148);
+            this.cmbEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbEmployee.Name = "cmbEmployee";
-            this.cmbEmployee.Size = new System.Drawing.Size(170, 28);
+            this.cmbEmployee.Size = new System.Drawing.Size(225, 33);
             this.cmbEmployee.TabIndex = 4;
             // 
             // lblEmployee
@@ -467,9 +495,10 @@
             this.lblEmployee.AutoSize = true;
             this.lblEmployee.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblEmployee.Location = new System.Drawing.Point(15, 95);
+            this.lblEmployee.Location = new System.Drawing.Point(20, 117);
+            this.lblEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(65, 19);
+            this.lblEmployee.Size = new System.Drawing.Size(75, 23);
             this.lblEmployee.TabIndex = 3;
             this.lblEmployee.Text = "Employé";
             // 
@@ -478,9 +507,10 @@
             this.cmbClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClient.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cmbClient.FormattingEnabled = true;
-            this.cmbClient.Location = new System.Drawing.Point(15, 50);
+            this.cmbClient.Location = new System.Drawing.Point(20, 62);
+            this.cmbClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbClient.Name = "cmbClient";
-            this.cmbClient.Size = new System.Drawing.Size(170, 28);
+            this.cmbClient.Size = new System.Drawing.Size(225, 33);
             this.cmbClient.TabIndex = 2;
             // 
             // lblClient
@@ -488,9 +518,10 @@
             this.lblClient.AutoSize = true;
             this.lblClient.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblClient.Location = new System.Drawing.Point(15, 25);
+            this.lblClient.Location = new System.Drawing.Point(20, 31);
+            this.lblClient.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(45, 19);
+            this.lblClient.Size = new System.Drawing.Size(54, 23);
             this.lblClient.TabIndex = 1;
             this.lblClient.Text = "Client";
             // 
@@ -499,9 +530,10 @@
             this.lblCreateOrder.AutoSize = true;
             this.lblCreateOrder.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblCreateOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.lblCreateOrder.Location = new System.Drawing.Point(200, 25);
+            this.lblCreateOrder.Location = new System.Drawing.Point(267, 31);
+            this.lblCreateOrder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCreateOrder.Name = "lblCreateOrder";
-            this.lblCreateOrder.Size = new System.Drawing.Size(180, 25);
+            this.lblCreateOrder.Size = new System.Drawing.Size(259, 32);
             this.lblCreateOrder.TabIndex = 0;
             this.lblCreateOrder.Text = "Créer une commande";
             // 
@@ -513,26 +545,11 @@
             this.pnlOrdersList.Controls.Add(this.dgvOrders);
             this.pnlOrdersList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlOrdersList.Location = new System.Drawing.Point(0, 0);
+            this.pnlOrdersList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlOrdersList.Name = "pnlOrdersList";
-            this.pnlOrdersList.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlOrdersList.Size = new System.Drawing.Size(696, 670);
+            this.pnlOrdersList.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
+            this.pnlOrdersList.Size = new System.Drawing.Size(929, 825);
             this.pnlOrdersList.TabIndex = 0;
-            // 
-            // dgvOrders
-            // 
-            this.dgvOrders.AllowUserToAddRows = false;
-            this.dgvOrders.AllowUserToDeleteRows = false;
-            this.dgvOrders.BackgroundColor = System.Drawing.Color.White;
-            this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvOrders.Location = new System.Drawing.Point(20, 20);
-            this.dgvOrders.Name = "dgvOrders";
-            this.dgvOrders.ReadOnly = true;
-            this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrders.Size = new System.Drawing.Size(656, 250);
-            this.dgvOrders.TabIndex = 0;
-            this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
             // 
             // pnlPayment
             // 
@@ -547,10 +564,11 @@
             this.pnlPayment.Controls.Add(this.lblPaymentMethod);
             this.pnlPayment.Controls.Add(this.lblPayment);
             this.pnlPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPayment.Location = new System.Drawing.Point(20, 400);
+            this.pnlPayment.Location = new System.Drawing.Point(27, 493);
+            this.pnlPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlPayment.Name = "pnlPayment";
-            this.pnlPayment.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlPayment.Size = new System.Drawing.Size(656, 250);
+            this.pnlPayment.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.pnlPayment.Size = new System.Drawing.Size(875, 307);
             this.pnlPayment.TabIndex = 2;
             // 
             // dgvPayments
@@ -560,10 +578,12 @@
             this.dgvPayments.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPayments.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvPayments.Location = new System.Drawing.Point(15, 120);
+            this.dgvPayments.Location = new System.Drawing.Point(20, 147);
+            this.dgvPayments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvPayments.Name = "dgvPayments";
             this.dgvPayments.ReadOnly = true;
-            this.dgvPayments.Size = new System.Drawing.Size(626, 115);
+            this.dgvPayments.RowHeadersWidth = 51;
+            this.dgvPayments.Size = new System.Drawing.Size(835, 142);
             this.dgvPayments.TabIndex = 8;
             // 
             // btnAddPayment
@@ -575,9 +595,10 @@
             this.btnAddPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddPayment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnAddPayment.ForeColor = System.Drawing.Color.White;
-            this.btnAddPayment.Location = new System.Drawing.Point(550, 80);
+            this.btnAddPayment.Location = new System.Drawing.Point(733, 98);
+            this.btnAddPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddPayment.Name = "btnAddPayment";
-            this.btnAddPayment.Size = new System.Drawing.Size(90, 35);
+            this.btnAddPayment.Size = new System.Drawing.Size(120, 43);
             this.btnAddPayment.TabIndex = 7;
             this.btnAddPayment.Text = "➕ Ajouter";
             this.btnAddPayment.UseVisualStyleBackColor = false;
@@ -586,9 +607,10 @@
             // txtTips
             // 
             this.txtTips.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTips.Location = new System.Drawing.Point(400, 50);
+            this.txtTips.Location = new System.Drawing.Point(533, 62);
+            this.txtTips.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTips.Name = "txtTips";
-            this.txtTips.Size = new System.Drawing.Size(130, 27);
+            this.txtTips.Size = new System.Drawing.Size(172, 32);
             this.txtTips.TabIndex = 6;
             // 
             // lblTips
@@ -596,18 +618,20 @@
             this.lblTips.AutoSize = true;
             this.lblTips.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblTips.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTips.Location = new System.Drawing.Point(400, 25);
+            this.lblTips.Location = new System.Drawing.Point(533, 31);
+            this.lblTips.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTips.Name = "lblTips";
-            this.lblTips.Size = new System.Drawing.Size(70, 19);
+            this.lblTips.Size = new System.Drawing.Size(84, 23);
             this.lblTips.TabIndex = 5;
             this.lblTips.Text = "Pourboire";
             // 
             // txtPaymentAmount
             // 
             this.txtPaymentAmount.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPaymentAmount.Location = new System.Drawing.Point(200, 50);
+            this.txtPaymentAmount.Location = new System.Drawing.Point(267, 62);
+            this.txtPaymentAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPaymentAmount.Name = "txtPaymentAmount";
-            this.txtPaymentAmount.Size = new System.Drawing.Size(180, 27);
+            this.txtPaymentAmount.Size = new System.Drawing.Size(239, 32);
             this.txtPaymentAmount.TabIndex = 4;
             // 
             // lblPaymentAmount
@@ -615,9 +639,10 @@
             this.lblPaymentAmount.AutoSize = true;
             this.lblPaymentAmount.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPaymentAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblPaymentAmount.Location = new System.Drawing.Point(200, 25);
+            this.lblPaymentAmount.Location = new System.Drawing.Point(267, 31);
+            this.lblPaymentAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPaymentAmount.Name = "lblPaymentAmount";
-            this.lblPaymentAmount.Size = new System.Drawing.Size(60, 19);
+            this.lblPaymentAmount.Size = new System.Drawing.Size(76, 23);
             this.lblPaymentAmount.TabIndex = 3;
             this.lblPaymentAmount.Text = "Montant";
             // 
@@ -626,9 +651,10 @@
             this.cmbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.cmbPaymentMethod.FormattingEnabled = true;
-            this.cmbPaymentMethod.Location = new System.Drawing.Point(15, 50);
+            this.cmbPaymentMethod.Location = new System.Drawing.Point(20, 62);
+            this.cmbPaymentMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(170, 28);
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(225, 33);
             this.cmbPaymentMethod.TabIndex = 2;
             // 
             // lblPaymentMethod
@@ -636,9 +662,10 @@
             this.lblPaymentMethod.AutoSize = true;
             this.lblPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPaymentMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblPaymentMethod.Location = new System.Drawing.Point(15, 25);
+            this.lblPaymentMethod.Location = new System.Drawing.Point(20, 31);
+            this.lblPaymentMethod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPaymentMethod.Name = "lblPaymentMethod";
-            this.lblPaymentMethod.Size = new System.Drawing.Size(130, 19);
+            this.lblPaymentMethod.Size = new System.Drawing.Size(180, 23);
             this.lblPaymentMethod.TabIndex = 1;
             this.lblPaymentMethod.Text = "Méthode de paiement";
             // 
@@ -647,9 +674,10 @@
             this.lblPayment.AutoSize = true;
             this.lblPayment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.lblPayment.Location = new System.Drawing.Point(15, 0);
+            this.lblPayment.Location = new System.Drawing.Point(20, 0);
+            this.lblPayment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(140, 21);
+            this.lblPayment.Size = new System.Drawing.Size(244, 28);
             this.lblPayment.TabIndex = 0;
             this.lblPayment.Text = "💳 Traitement paiement";
             // 
@@ -658,12 +686,15 @@
             this.pnlOrderManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.pnlOrderManagement.Controls.Add(this.cmbStatus);
             this.pnlOrderManagement.Controls.Add(this.lblStatus);
+            this.pnlOrderManagement.Controls.Add(this.btnDeleteOrder);
             this.pnlOrderManagement.Controls.Add(this.lblOrderManagement);
+            this.pnlOrderManagement.Controls.Add(this.btnUpdateStatus);
             this.pnlOrderManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlOrderManagement.Location = new System.Drawing.Point(20, 270);
+            this.pnlOrderManagement.Location = new System.Drawing.Point(27, 333);
+            this.pnlOrderManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlOrderManagement.Name = "pnlOrderManagement";
-            this.pnlOrderManagement.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlOrderManagement.Size = new System.Drawing.Size(656, 130);
+            this.pnlOrderManagement.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.pnlOrderManagement.Size = new System.Drawing.Size(875, 160);
             this.pnlOrderManagement.TabIndex = 1;
             // 
             // cmbStatus
@@ -677,9 +708,10 @@
             "Ready",
             "Completed",
             "Cancelled"});
-            this.cmbStatus.Location = new System.Drawing.Point(15, 50);
+            this.cmbStatus.Location = new System.Drawing.Point(20, 62);
+            this.cmbStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(200, 28);
+            this.cmbStatus.Size = new System.Drawing.Size(265, 33);
             this.cmbStatus.TabIndex = 2;
             // 
             // lblStatus
@@ -687,9 +719,10 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblStatus.Location = new System.Drawing.Point(15, 25);
+            this.lblStatus.Location = new System.Drawing.Point(20, 31);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(45, 19);
+            this.lblStatus.Size = new System.Drawing.Size(55, 23);
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Statut";
             // 
@@ -698,20 +731,41 @@
             this.lblOrderManagement.AutoSize = true;
             this.lblOrderManagement.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblOrderManagement.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.lblOrderManagement.Location = new System.Drawing.Point(15, 0);
+            this.lblOrderManagement.Location = new System.Drawing.Point(20, 0);
+            this.lblOrderManagement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrderManagement.Name = "lblOrderManagement";
-            this.lblOrderManagement.Size = new System.Drawing.Size(200, 21);
+            this.lblOrderManagement.Size = new System.Drawing.Size(275, 28);
             this.lblOrderManagement.TabIndex = 0;
             this.lblOrderManagement.Text = "📋 Gestion des commandes";
             // 
+            // dgvOrders
+            // 
+            this.dgvOrders.AllowUserToAddRows = false;
+            this.dgvOrders.AllowUserToDeleteRows = false;
+            this.dgvOrders.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvOrders.Location = new System.Drawing.Point(27, 25);
+            this.dgvOrders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.ReadOnly = true;
+            this.dgvOrders.RowHeadersWidth = 51;
+            this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrders.Size = new System.Drawing.Size(875, 308);
+            this.dgvOrders.TabIndex = 0;
+            this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellContentClick);
+            this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
+            // 
             // Form_OrderList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1400, 750);
+            this.ClientSize = new System.Drawing.Size(1867, 923);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTop);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form_OrderList";
             this.Text = "Gestion des Commandes";
             this.Load += new System.EventHandler(this.Form_OrderList_Load);
@@ -731,12 +785,12 @@
             this.pnlOrderInfo.ResumeLayout(false);
             this.pnlOrderInfo.PerformLayout();
             this.pnlOrdersList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.pnlPayment.ResumeLayout(false);
             this.pnlPayment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).EndInit();
             this.pnlOrderManagement.ResumeLayout(false);
             this.pnlOrderManagement.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.ResumeLayout(false);
 
         }

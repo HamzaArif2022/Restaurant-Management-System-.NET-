@@ -3,12 +3,8 @@ using RestaurantManagSyst.Service.IServices;
 using RestaurantManagSyst.Service.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RestaurantManagSyst.Presentation
@@ -16,13 +12,20 @@ namespace RestaurantManagSyst.Presentation
     public partial class Form_MenuItemList : Form
     {
         private readonly IMenuItemService _menuItemService;
+        private readonly IIngredientService _ingredientService;
+        private readonly IMenuItemIngredientService _menuItemIngredientService;
+
         private bool _isEditMode = false;
         private int _selectedMenuItemId = 0;
+        private List<MenuItemIngredientDto> _linkedIngredients;
 
         public Form_MenuItemList()
         {
             InitializeComponent();
             _menuItemService = new MenuItemService();
+            _ingredientService = new IngredientService();
+            _menuItemIngredientService = new MenuItemIngredientService();
+            _linkedIngredients = new List<MenuItemIngredientDto>();
         }
 
         private void Form_MenuItemList_Load(object sender, EventArgs e)
@@ -30,12 +33,15 @@ namespace RestaurantManagSyst.Presentation
             LoadMenuItems();
             ClearForm();
             ConfigureDataGridView();
+            ConfigureIngredientsDataGridView();
             LoadCategories();
+            LoadAllIngredients();
         }
+
+        #region Configuration Methods
 
         private void LoadCategories()
         {
-            // Common restaurant menu categories
             cmbCategory.Items.Clear();
             cmbCategory.Items.AddRange(new string[] {
                 "Entrées",
@@ -149,6 +155,127 @@ namespace RestaurantManagSyst.Presentation
             });
         }
 
+        private void ConfigureIngredientsDataGridView()
+        {
+            // Configure dgvIngredients (Available Ingredients)
+            dgvIngredients.AutoGenerateColumns = false;
+            dgvIngredients.AllowUserToAddRows = false;
+            dgvIngredients.ReadOnly = true;
+            dgvIngredients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvIngredients.MultiSelect = false;
+            dgvIngredients.RowHeadersVisible = false;
+            dgvIngredients.BackgroundColor = Color.White;
+            dgvIngredients.BorderStyle = BorderStyle.FixedSingle;
+            dgvIngredients.DefaultCellStyle.SelectionBackColor = Color.FromArgb(94, 148, 255);
+            dgvIngredients.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvIngredients.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+            dgvIngredients.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 73, 94);
+            dgvIngredients.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvIngredients.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dgvIngredients.ColumnHeadersHeight = 30;
+            dgvIngredients.RowTemplate.Height = 28;
+            dgvIngredients.EnableHeadersVisualStyles = false;
+
+            dgvIngredients.Columns.Clear();
+            dgvIngredients.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Id",
+                HeaderText = "ID",
+                Width = 40
+            });
+            dgvIngredients.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Name",
+                HeaderText = "Nom",
+                Width = 180
+            });
+            dgvIngredients.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Unit",
+                HeaderText = "Unité",
+                Width = 80
+            });
+
+            // Configure dgvLinkedIngredients
+            dgvLinkedIngredients.AutoGenerateColumns = false;
+            dgvLinkedIngredients.AllowUserToAddRows = false;
+            dgvLinkedIngredients.ReadOnly = true;
+            dgvLinkedIngredients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLinkedIngredients.MultiSelect = false;
+            dgvLinkedIngredients.RowHeadersVisible = false;
+            dgvLinkedIngredients.BackgroundColor = Color.White;
+            dgvLinkedIngredients.BorderStyle = BorderStyle.FixedSingle;
+            dgvLinkedIngredients.DefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 76, 60);
+            dgvLinkedIngredients.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvLinkedIngredients.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+            dgvLinkedIngredients.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(46, 204, 113);
+            dgvLinkedIngredients.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvLinkedIngredients.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dgvLinkedIngredients.ColumnHeadersHeight = 30;
+            dgvLinkedIngredients.RowTemplate.Height = 28;
+            dgvLinkedIngredients.EnableHeadersVisualStyles = false;
+
+            dgvLinkedIngredients.Columns.Clear();
+            dgvLinkedIngredients.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "IngredientName",
+                HeaderText = "Ingrédient",
+                Width = 150
+            });
+            dgvLinkedIngredients.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "QuantityRequired",
+                HeaderText = "Quantité",
+                Width = 80,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" }
+            });
+            dgvLinkedIngredients.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Unit",
+                HeaderText = "Unité",
+                Width = 70
+            });
+        }
+
+        #endregion
+
+        #region Data Loading Methods
+
+        private void LoadAllIngredients()
+        {
+            var response = _ingredientService.GetAllIngredients();
+            if (response.IsSuccess)
+            {
+                var ingredients = response.Data as List<IngredientDto>;
+                dgvIngredients.DataSource = ingredients;
+            }
+            else
+            {
+                MessageBox.Show(response.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadLinkedIngredients(int menuItemId)
+        {
+            var response = _menuItemIngredientService.GetIngredientsByMenuItemId(menuItemId);
+            if (response.IsSuccess)
+            {
+                _linkedIngredients = (response.Data as List<MenuItemIngredientDto>) ?? new List<MenuItemIngredientDto>();
+                RefreshLinkedIngredientsGrid();
+            }
+            else
+            {
+                _linkedIngredients = new List<MenuItemIngredientDto>();
+                dgvLinkedIngredients.DataSource = null;
+            }
+        }
+
+        private void RefreshLinkedIngredientsGrid()
+        {
+            dgvLinkedIngredients.DataSource = null;
+            dgvLinkedIngredients.DataSource = _linkedIngredients;
+        }
+
         private void LoadMenuItems()
         {
             var response = _menuItemService.GetAllMenuItems();
@@ -165,10 +292,18 @@ namespace RestaurantManagSyst.Presentation
             }
         }
 
+        #endregion
+
+        #region Button Click Events
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _isEditMode = false;
+            _selectedMenuItemId = 0;
             ClearForm();
+            _linkedIngredients.Clear();
+            dgvLinkedIngredients.DataSource = null;
+            lblFormTitle.Text = "🍔 Nouvel Article du Menu";
             CenterFormPanel();
             pnlForm.Visible = true;
             txtName.Focus();
@@ -191,12 +326,17 @@ namespace RestaurantManagSyst.Presentation
                 _selectedMenuItemId = selectedMenuItem.Id;
                 txtName.Text = selectedMenuItem.Name;
                 txtDescription.Text = selectedMenuItem.Description;
-                txtPrice.Text = selectedMenuItem.Price.ToString();
-                txtBuyingPrice.Text = selectedMenuItem.BuyingPrice?.ToString() ?? "";
+                txtPrice.Text = selectedMenuItem.Price.ToString("F2");
+                txtBuyingPrice.Text = selectedMenuItem.BuyingPrice?.ToString("F2") ?? "";
                 cmbCategory.Text = selectedMenuItem.Category;
                 txtPreparationTime.Text = selectedMenuItem.PreparationTime?.ToString() ?? "";
                 chkIsAvailable.Checked = selectedMenuItem.IsAvailable;
                 txtImage.Text = selectedMenuItem.Image;
+
+                // Load linked ingredients for editing
+                LoadLinkedIngredients(_selectedMenuItemId);
+
+                lblFormTitle.Text = $"✏️ Modifier: {selectedMenuItem.Name}";
                 CenterFormPanel();
                 pnlForm.Visible = true;
                 txtName.Focus();
@@ -217,13 +357,17 @@ namespace RestaurantManagSyst.Presentation
             if (selectedMenuItem != null)
             {
                 var confirmResult = MessageBox.Show(
-                    $"Êtes-vous sûr de vouloir supprimer l'article '{selectedMenuItem.Name}' ?",
-                    "Confirmation",
+                    $"Êtes-vous sûr de vouloir supprimer l'article '{selectedMenuItem.Name}' ?\n\nTous les ingrédients liés seront également supprimés.",
+                    "Confirmation de suppression",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
                 if (confirmResult == DialogResult.Yes)
                 {
+                    // Delete linked ingredients first
+                    _menuItemIngredientService.DeleteByMenuItemId(selectedMenuItem.Id);
+
+                    // Then delete menu item
                     var response = _menuItemService.DeleteMenuItem(selectedMenuItem.Id);
 
                     if (response.IsSuccess)
@@ -270,6 +414,82 @@ namespace RestaurantManagSyst.Presentation
             }
         }
 
+        private void btnAddIngredient_Click(object sender, EventArgs e)
+        {
+            if (dgvIngredients.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Veuillez sélectionner un ingrédient", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var selectedIngredient = dgvIngredients.SelectedRows[0].DataBoundItem as IngredientDto;
+
+            if (selectedIngredient != null)
+            {
+                // Check if ingredient already linked
+                if (_linkedIngredients.Any(li => li.IngredientId == selectedIngredient.Id))
+                {
+                    MessageBox.Show("Cet ingrédient est déjà lié à cet article", "Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Add to temporary list
+                var menuItemIngredient = new MenuItemIngredientDto
+                {
+                    MenuItemId = _selectedMenuItemId,
+                    IngredientId = selectedIngredient.Id,
+                    IngredientName = selectedIngredient.Name,
+                    QuantityRequired = nudQuantityRequired.Value,
+                    Unit = selectedIngredient.Unit
+                };
+
+                _linkedIngredients.Add(menuItemIngredient);
+
+                // Refresh grid
+                RefreshLinkedIngredientsGrid();
+
+                MessageBox.Show($"Ingrédient '{selectedIngredient.Name}' ajouté avec succès!", "Succès",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Reset quantity to 1
+                nudQuantityRequired.Value = 1;
+            }
+        }
+
+        private void btnRemoveIngredient_Click(object sender, EventArgs e)
+        {
+            if (dgvLinkedIngredients.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Veuillez sélectionner un ingrédient à retirer", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var selectedLinkedIngredient = dgvLinkedIngredients.SelectedRows[0].DataBoundItem as MenuItemIngredientDto;
+
+            if (selectedLinkedIngredient != null)
+            {
+                var confirmResult = MessageBox.Show(
+                    $"Êtes-vous sûr de vouloir retirer '{selectedLinkedIngredient.IngredientName}' ?",
+                    "Confirmation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    _linkedIngredients.Remove(selectedLinkedIngredient);
+
+                    // Refresh grid
+                    RefreshLinkedIngredientsGrid();
+
+                    MessageBox.Show("Ingrédient retiré avec succès!", "Succès",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateForm())
@@ -288,14 +508,39 @@ namespace RestaurantManagSyst.Presentation
                 Image = txtImage.Text.Trim()
             };
 
+            // Save MenuItem first
             var response = _isEditMode
                 ? _menuItemService.UpdateMenuItem(menuItemDto)
                 : _menuItemService.AddMenuItem(menuItemDto);
 
             if (response.IsSuccess)
             {
-                MessageBox.Show(response.Message, "Succès",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var savedMenuItem = response.Data as MenuItemDto;
+                int menuItemId = savedMenuItem?.Id ?? _selectedMenuItemId;
+
+                // Save linked ingredients
+                // If editing, delete existing links first
+                if (_isEditMode)
+                {
+                    _menuItemIngredientService.DeleteByMenuItemId(menuItemId);
+                }
+
+                // Add new links
+                if (_linkedIngredients.Any())
+                {
+                    foreach (var linkedIngredient in _linkedIngredients)
+                    {
+                        linkedIngredient.MenuItemId = menuItemId;
+                        _menuItemIngredientService.AddMenuItemIngredient(linkedIngredient);
+                    }
+                }
+
+                MessageBox.Show(
+                    _isEditMode ? "Article mis à jour avec succès!" : "Article créé avec succès!",
+                    "Succès",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
                 LoadMenuItems();
                 pnlForm.Visible = false;
                 ClearForm();
@@ -309,9 +554,31 @@ namespace RestaurantManagSyst.Presentation
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            pnlForm.Visible = false;
-            ClearForm();
+            var confirmResult = MessageBox.Show(
+                "Êtes-vous sûr de vouloir annuler ? Les modifications non enregistrées seront perdues.",
+                "Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                pnlForm.Visible = false;
+                ClearForm();
+            }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            LoadMenuItems();
+            LoadAllIngredients();
+            MessageBox.Show("Données actualisées avec succès!", "Actualisation",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        #endregion
+
+        #region Search and Filter
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -325,11 +592,9 @@ namespace RestaurantManagSyst.Presentation
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            txtSearch.Clear();
-            LoadMenuItems();
-        }
+        #endregion
+
+        #region Validation Methods
 
         private bool ValidateForm()
         {
@@ -379,12 +644,25 @@ namespace RestaurantManagSyst.Presentation
                 }
             }
 
+            if (string.IsNullOrWhiteSpace(cmbCategory.Text))
+            {
+                MessageBox.Show("Veuillez sélectionner une catégorie", "Validation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbCategory.Focus();
+                return false;
+            }
+
             return true;
         }
+
+        #endregion
+
+        #region Utility Methods
 
         private void ClearForm()
         {
             _selectedMenuItemId = 0;
+            _isEditMode = false;
             txtName.Clear();
             txtDescription.Clear();
             txtPrice.Clear();
@@ -393,7 +671,21 @@ namespace RestaurantManagSyst.Presentation
             txtPreparationTime.Clear();
             chkIsAvailable.Checked = true;
             txtImage.Clear();
+            nudQuantityRequired.Value = 1;
+            _linkedIngredients.Clear();
+            dgvLinkedIngredients.DataSource = null;
+            lblFormTitle.Text = "🍔 Article du Menu";
         }
+
+        private void CenterFormPanel()
+        {
+            pnlForm.Left = (this.ClientSize.Width - pnlForm.Width) / 2;
+            pnlForm.Top = (this.ClientSize.Height - pnlForm.Height) / 2;
+        }
+
+        #endregion
+
+        #region DataGridView Events
 
         private void dgvMenuItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -403,10 +695,6 @@ namespace RestaurantManagSyst.Presentation
             }
         }
 
-        private void CenterFormPanel()
-        {
-            pnlForm.Left = (this.ClientSize.Width - pnlForm.Width) / 2;
-            pnlForm.Top = (this.ClientSize.Height - pnlForm.Height) / 2;
-        }
+        #endregion
     }
 }

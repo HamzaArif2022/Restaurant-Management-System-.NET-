@@ -90,11 +90,14 @@ namespace RestaurantManagSyst.Presentation
                 var user = response.Data as UserDto;
                 CurrentUser.User = user;
 
-                // Ouvrir le formulaire principal
+                
                 this.Hide();
+
                 Form_Main mainForm = new Form_Main();
                 mainForm.FormClosed += MainForm_FormClosed;
                 mainForm.Show();
+
+            
             }
             else
             {
@@ -106,8 +109,8 @@ namespace RestaurantManagSyst.Presentation
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Quand le formulaire principal se ferme, fermer l'application
-            this.Close();
+           
+            Application.Exit(); 
         }
 
         private void ShowError(string message)
