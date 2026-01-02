@@ -1,14 +1,14 @@
 ﻿
 
--- 1️⃣ Create the database
+
 CREATE DATABASE RestaurantManagement;
 GO
 
--- 2️⃣ Use the database
+
 USE RestaurantManagement;
 GO
 
--- 3️⃣ Create Clients table
+
 CREATE TABLE Clients (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE Clients (
 );
 GO
 
--- 4️⃣ Create Employees table
+
 CREATE TABLE Employees (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE Employees (
 );
 GO
 
--- 5️⃣ Create MenuItems table
+
 CREATE TABLE MenuItems (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE MenuItems (
 
 GO
 
--- 6️⃣ Create Ingredients table
+
 CREATE TABLE Ingredients (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE Ingredients (
 );
 GO
 
--- 7️⃣ Create MenuItemIngredients table
+
 CREATE TABLE MenuItemIngredients (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     MenuItemId INT NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE MenuItemIngredients (
 );
 GO
 
--- 8️⃣ Create PaymentMethods table
+
 CREATE TABLE PaymentMethods (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Label NVARCHAR(100) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE PaymentMethods (
 );
 GO
 
--- 9️⃣ Create Inventory table
+
 CREATE TABLE Inventory (
     IngredientId INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -87,7 +87,6 @@ CREATE TABLE Inventory (
 );
 GO
 
--- 🔟 Create Orders table
 CREATE TABLE Orders (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     ClientId INT NULL,
@@ -102,7 +101,6 @@ CREATE TABLE Orders (
 );
 GO
 
--- 1️⃣1️⃣ Create Payments table
 CREATE TABLE Payments (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     OrderId INT NOT NULL,
@@ -127,7 +125,6 @@ CREATE TABLE Users (
 GO
 
 
--- 1️⃣ Create OrderItems table (SQL Server)
 CREATE TABLE OrderItems (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     OrderId INT NOT NULL,
@@ -144,4 +141,16 @@ CREATE TABLE OrderItems (
 );
 GO
 
+
+CREATE TABLE ProductInventory (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    MenuItemId INT NOT NULL,
+    Quantity INT NOT NULL DEFAULT 0,
+    ReorderLevel INT NOT NULL DEFAULT 0,
+    LastUpdated DATETIME2 NOT NULL DEFAULT GETDATE(),
+
+    CONSTRAINT FK_ProductInventory_MenuItems
+        FOREIGN KEY (MenuItemId) REFERENCES MenuItems(Id)
+);
+GO
 
