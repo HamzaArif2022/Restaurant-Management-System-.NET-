@@ -216,20 +216,8 @@ RestaurantManagSyst.Presentation
 
 ### Stock des produits (ProductInventory)
 
-```sql
-CREATE TABLE ProductInventory (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    MenuItemId INT NOT NULL,
-    Quantity INT NOT NULL DEFAULT 0,
-    ReorderLevel INT NOT NULL DEFAULT 0,
-    LastUpdated DATETIME2 NOT NULL DEFAULT GETDATE(),
 
-    CONSTRAINT FK_ProductInventory_MenuItems
-        FOREIGN KEY (MenuItemId) REFERENCES MenuItems(Id)
-);
-```
 
----
 
 ## 🛒 Gestion des Commandes
 
